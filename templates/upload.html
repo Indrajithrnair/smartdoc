@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartDoc Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .file-input {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-button:hover {
+            background-color: #45a049;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .download-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .download-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SmartDoc Formatter</h1>
+        <form class="upload-form" action="/format" method="post" enctype="multipart/form-data">
+            <div class="file-input">
+                <input type="file" name="file" id="file" accept=".docx" required>
+                <p>Drag and drop a Word document or click to select</p>
+            </div>
+            <input type="text" name="instruction" placeholder="Enter formatting instruction (e.g., make text italic)" required>
+            <button type="submit" class="submit-button">Format Document</button>
+        </form>
+        {% if download_url %}
+        <div class="success">
+            Document formatted successfully!
+            <a href="{{ download_url }}" class="download-link">Download formatted document</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

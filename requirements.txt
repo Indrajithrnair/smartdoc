@@ -1,0 +1,5 @@
+Flask
+python-dotenv
+langchain
+python-docx
+langchain-groq          # for ChatGroq integration
