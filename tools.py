@@ -45,7 +45,8 @@ def detect_and_call(input_str: str) -> str:
     doc = Document(path)
     HELPERS[helper_key](doc)
     doc.save(path)
-    return f"Applied {helper_key} to {path}"
+    return f"FinalAnswer: Successfully applied '{helper_key}' formatting to the document at {path}."
+
 
 # LangChain tool registration
 format_tool = Tool(
@@ -54,5 +55,6 @@ format_tool = Tool(
     description=(
         "Use this to apply formatting (like italic) to a .docx file. "
         "Input must include a formatting keyword like 'italic' and the file path using 'File path: outputs/xyz.docx'."
-    )
+    ),
+    return_direct=True
 )
